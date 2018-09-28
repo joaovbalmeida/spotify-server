@@ -6,7 +6,7 @@ const { URL } = require('url');
 const QueryString = require('querystring');
 
 // Require the framework and instantiate it
-const sptApp = express();
+const app = express();
 
 // init spotify config
 const spClientId = '84f3966b6522451686c303f5900fc12b';
@@ -103,13 +103,13 @@ function postRequest(url, data={})
 }
 
 // support form body
-sptApp.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 
 /**
  * Swap endpoint
  * Uses an authentication code on body to request access and refresh tokens
  */
-sptApp.post('/swap', async (req, res) => {
+app.post('/swap', async (req, res) => {
   try {
     // build request data
     const reqData = {
@@ -149,7 +149,7 @@ sptApp.post('/swap', async (req, res) => {
  * Refresh endpoint
  * Uses the refresh token on request body to get a new access token
  */
-sptApp.post('/refresh', async (req, res) => {
+app.post('/refresh', async (req, res) => {
   try {
     // ensure refresh token parameter
     if (!req.body.refresh_token) {
