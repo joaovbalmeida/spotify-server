@@ -1,6 +1,5 @@
 // npm deps
 const express = require('express');
-const logger = require('winston');
 const https = require('https');
 const crypto = require('crypto');
 const { URL } = require('url');
